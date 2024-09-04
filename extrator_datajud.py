@@ -2,8 +2,7 @@ import requests
 import json
 import pandas as pd
 
-from helpers import fetch_processes_from_api
-
+from helpers import extract_movements, fetch_processes_from_api
 
 
 def fetch_all_processes(api_key):
@@ -115,8 +114,11 @@ def fetch_all_processes(api_key):
         print(f"Buscando dados do {name}...")
         results = fetch_processes_from_api(url, api_key)
         if results:
-            all_results.append({"Tribunal": name, "Dados": results})
-    
+            try:
+                for item in results['hits']['hits'][0]['_source']['movimentos']:
+                    all_results.append({"Tribunal": name, "Codigo":item['codigo'], "Nome": item['nome']})
+            except:
+                continue
     return all_results
 
 

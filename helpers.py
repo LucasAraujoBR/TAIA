@@ -27,10 +27,27 @@ def fetch_processes_from_api(url, api_key):
         # Faz a requisição POST para a API
         response = requests.post(url, headers=headers, data=payload)
         response.raise_for_status()  # Levanta um erro para códigos de status HTTP ruins
+        # print(response.json())
         return response.json()  # Retorna o JSON da resposta
     except requests.RequestException as e:
         print(f"Erro ao buscar dados de {url}: {e}")
         return None
+
+def extract_movements(data):
+    if data is None:
+        return []
+    
+    try:
+        # Acessa a lista de movimentos
+        hits = data.get('hits', {}).get('hits', [])
+        movements = []
+        for hit in hits:
+            source = hit.get('_source', {})
+            movements.extend(source.get('movimentos', []))
+        return movements
+    except KeyError as e:
+        print(f"Erro ao acessar o campo no JSON: {e}")
+        return []
 
 
 def load_json(file_path):
@@ -56,9 +73,7 @@ def load_json(file_path):
     
 
 def send_openai_request(data):
-    load_dotenv()
-    
-    api_key = os.getenv('OPENAI_API_KEY')
+    api_key = "chave_gpt"  
     url = "https://api.openai.com/v1/chat/completions"
     headers = {
         "Content-Type": "application/json",
@@ -72,7 +87,7 @@ def send_openai_request(data):
         print(f"Erro na requisição: {e}")
         return None
 
-def create_request_payload(system_message, user_message, model="gpt-4o-mini"):
+def create_request_payload(system_message, user_message, model="gpt-3.5-turbo"):
     return {
         "model": model,
         "messages": [

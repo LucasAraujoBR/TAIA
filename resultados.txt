@@ -1,0 +1,56 @@
+
+########## - Logistic Regression -  # # # # # # # # # #
+Accuracy: 0.9927206551410374
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       1.00      0.99      1.00      1093
+           1       0.42      0.83      0.56         6
+
+    accuracy                           0.99      1099
+   macro avg       0.71      0.91      0.78      1099
+weighted avg       1.00      0.99      0.99      1099
+
+########## - Logistic Regression finalizado - ##########
+
+########## - SVC -  # # # # # # # # # #
+Accuracy: 0.9990900818926297
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00      1093
+           1       1.00      0.83      0.91         6
+
+    accuracy                           1.00      1099
+   macro avg       1.00      0.92      0.95      1099
+weighted avg       1.00      1.00      1.00      1099
+
+########## - SVC finalizado - ##########
+
+########## - Gradient Boosting -  # # # # # # # # # #
+Accuracy: 0.9990900818926297
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00      1093
+           1       1.00      0.83      0.91         6
+
+    accuracy                           1.00      1099
+   macro avg       1.00      0.92      0.95      1099
+weighted avg       1.00      1.00      1.00      1099
+
+########## - Gradient Boosting finalizado - ##########
+
+########## - KNN -  # # # # # # # # # #
+Accuracy: 0.9654231119199272
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       1.00      0.97      0.98      1093
+           1       0.14      1.00      0.24         6
+
+    accuracy                           0.97      1099
+   macro avg       0.57      0.98      0.61      1099
+weighted avg       1.00      0.97      0.98      1099
+
+########## - KNN finalizado - ##########
