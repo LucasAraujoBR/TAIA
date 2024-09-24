@@ -73,7 +73,7 @@ def load_json(file_path):
     
 
 def send_openai_request(data):
-    api_key = "chave_gpt"  
+    api_key = 'chavegpt' 
     url = "https://api.openai.com/v1/chat/completions"
     headers = {
         "Content-Type": "application/json",
